@@ -1,6 +1,7 @@
 const botao_background = document.querySelector("#botao_background");
 const botao_enviar = document.querySelector("#enviar_input_texto");
 const botao_abrir = document.querySelector('#botao_presente');
+const botao_exibir_mensagem = document.querySelector('#botao_exibir_mensagem')
 
 let inputUsuario
 
@@ -26,10 +27,17 @@ botao_background.addEventListener("click", () => {
 botao_abrir.addEventListener("click", () => {
     let imagem = document.querySelector("#imagem_animada");
 
-    if (imagem.getAttribute("src") == "./img/presente.jpg") {
+    if (imagem.getAttribute("src") == "./img/presente.png") {
         imagem.setAttribute("src", "./img/Ale.jfif");
         botao_abrir.textContent = "Clique aqui para embalar novamente o Alê!"
         return;
     }
-    imagem.setAttribute("src", "./img/presente.jpg");
+    imagem.setAttribute("src", "./img/presente.png");
+})
+
+botao_exibir_mensagem.addEventListener("click", () =>{
+    let paragrafo = document.querySelector("#elemento_a_exibir");
+    
+    paragrafo.textContent = "“E aqueles que foram vistos dançando foram julgados insanos por aqueles que não podiam escutar a música”";
+    paragrafo.setAttribute("style", "font-size:2rem");
 })
