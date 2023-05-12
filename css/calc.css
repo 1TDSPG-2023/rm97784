@@ -1,12 +1,29 @@
+* {
+    font-size: 1.5rem
+}
+
 .calc {
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
+.btn-calc { 
+    flex-direction: column;
+}
+
 .btn-calc, .oper-calc, .result-calc {
     display: flex;
     flex-wrap: wrap;
+    margin: 2% 0
+}
+
+.btn-calc-linha {
+    display: flex;
+}
+
+.btn-calc-linha > * {
+    margin: 0.5%;
 }
 
 .btn-calc button, .oper-calc button, .result-calc button {
