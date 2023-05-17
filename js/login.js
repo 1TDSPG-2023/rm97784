@@ -3,50 +3,60 @@ let tokenGerado = Math.random().toString(16).substring(2);
 
 //Declarando objetos
 const usuario1 = {
-    nomeUsuario: "denden",
-    senhaUsuario: "12345",
-    gravaDados: true,
-    token: tokenGerado
-}
+  nomeUsuario: "denden",
+  senhaUsuario: "12345",
+  gravaDados: true,
+  token: tokenGerado,
+};
 
 const usuario2 = {
-    nomeUsuario: "gege",
-    senhaUsuario: "12345",
-    gravaDados: true,
-    token: tokenGerado
-}
+  nomeUsuario: "gege",
+  senhaUsuario: "12345",
+  gravaDados: true,
+  token: tokenGerado,
+};
 
-let listaDeUsuarios = []
+let listaDeUsuarios = [];
 listaDeUsuarios.push(usuario1);
 listaDeUsuarios.push(usuario2);
 
-
 addEventListener("click", (evt) => {
-    if (evt.target.id == "btnSubmit") {
-        const inputUser = document.querySelector("#idUser");
-        const inputPass = document.querySelector("#idPass");
+  const inputUser = document.querySelector("#idUser");
+  const inputPass = document.querySelector("#idPass");
+  const iconEye = document.querySelector("#iconEye")
 
-        try {
-
-            listaDeUsuarios.forEach((usuario) => {
-                if (inputUser.value == usuario.nomeUsuario && inputPass.value == usuario.senhaUsuario) {
-                    throw "VALIDADO";
-                }
-            });
-
-            throw "NÃO VALIDADO";
-
-        } catch (msg) {
-            const msgError = document.querySelector("#msgError");
-
-            if (msg == "VALIDADO") {
-                msgError.setAttribute("style", "color:#00ff00")
-                msgError.innerHTML = "<span><strong>Login bem-sucedido!</strong></span>"
-                return;
-            }
-            msgError.setAttribute("style", "color:#ff0000");
-            msgError.innerHTML = "<span><strong>Usuário e/ou senha inválido(s)!</strong></span>"
+  if (evt.target.id == "btnSubmit") {
+    try {
+      listaDeUsuarios.forEach((usuario) => {
+        if (
+          inputUser.value == usuario.nomeUsuario &&
+          inputPass.value == usuario.senhaUsuario
+        ) {
+          throw "VALIDADO";
         }
+      });
 
+      throw "NÃO VALIDADO";
+    } catch (msg) {
+      const msgError = document.querySelector("#msgError");
+
+      if (msg == "VALIDADO") {
+        msgError.setAttribute("style", "color:#00ff00");
+        msgError.innerHTML =
+          "<span><strong>Login bem-sucedido!</strong></span>";
+        return;
+      }
+      msgError.setAttribute("style", "color:#ff0000");
+      msgError.innerHTML =
+        "<span><strong>Usuário e/ou senha inválido(s)!</strong></span>";
     }
-})
+  } else if (evt.target.id == "iconEye") {
+    if (inputPass.getAttribute("type") == "password") {
+      inputPass.setAttribute("type", "text");
+      iconEye.setAttribute("class", "fa fa-eye-slash");
+    } else {
+        inputPass.setAttribute("type", "password");
+        iconEye.setAttribute("class", "fa fa-eye");
+    }
+  }
+});
